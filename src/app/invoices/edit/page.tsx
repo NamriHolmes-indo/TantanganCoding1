@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useInvoiceStorage, Invoice } from "@/hooks/useInvoiceStorage";
+import { useInvoiceStorage } from "@/hooks/useInvoiceStorage";
+import { Invoice } from "@/lib/types/invoiceTypes";
 import TambahInvoice from "@/components/invoices/InvoiceForm";
 import SideNav from "@/components/SideNav";
 import NotifInsert from "@/components/invoices/Notifikasi";
@@ -63,14 +64,9 @@ export default function EditInvoicePage() {
           </h2>
           <TambahInvoice
             onActionComplete={() => router.push("/invoices/list")}
-            initialInvoice={invoiceData}
           />
         </section>
-        <NotifInsert
-          status="success"
-          missingFields={[]}
-          className="transition-opacity duration-500 ease-in-out opacity-100"
-        />
+        <NotifInsert status="success" missingFields={[]} />
       </main>
     </div>
   );

@@ -39,12 +39,8 @@ export default function AddInvoicePage() {
           </section>
 
           {status && (
-            <div className="absolute bottom-16 w-full max-w-[1000px] mx-auto">
-              <NotifInsert
-                status={status}
-                missingFields={missingFields}
-                className="transition-opacity duration-500 ease-in-out opacity-100"
-              />
+            <div className="absolute bottom-16 transition-opacity duration-500 ease-in-out opacity-100 w-full max-w-[1000px] mx-auto">
+              <NotifInsert status={status} missingFields={missingFields} />
             </div>
           )}
         </section>

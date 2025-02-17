@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Invoice } from "@/lib/types/invoiceTypes";
-import { InvoiceStatus } from "@/constants/invoiceStatus";
 
 export const useInvoiceStorage = () => {
     const [invoices, setInvoices] = useState<Invoice[]>([]);

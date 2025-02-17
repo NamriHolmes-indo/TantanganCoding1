@@ -1,10 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useInvoiceStorage, Invoice } from "@/hooks/useInvoiceStorage";
+import { useInvoiceStorage } from "@/hooks/useInvoiceStorage";
 import InvoiceTable from "@/components/invoices/InvoiceTable";
 import TambahInvoice from "@/components/invoices/InvoiceForm";
 import SideNav from "@/components/SideNav";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Invoice } from "@/constants/invoiceStatus";
 
 export default function InvoiceListPage() {
   const { invoices, updateInvoice, deleteInvoice } = useInvoiceStorage();
@@ -99,10 +100,7 @@ export default function InvoiceListPage() {
             <h2 className="w-full text-black border-b-2 pb-2 mb-4 text-xl px-6">
               Edit Invoice
             </h2>
-            <TambahInvoice
-              onActionComplete={handleActionComplete}
-              initialInvoice={selectedInvoice}
-            />
+            <TambahInvoice onActionComplete={handleActionComplete} />
           </section>
         )}
 

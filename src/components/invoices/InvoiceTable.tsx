@@ -1,16 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Invoice } from "@/hooks/useInvoiceStorage";
+import { Invoice } from "@/lib/types/invoiceTypes";
+
 import { formatRupiah } from "@/utils/formatCurrency";
 
-const InvoiceTable = ({
-  invoices,
-  onDelete,
-}: {
+interface InvoiceTableProps {
   invoices: Invoice[];
   onDelete: (invoice: Invoice) => void;
-}) => {
+  onEdit: (invoice: Invoice) => void;
+}
+
+const InvoiceTable = ({ invoices, onDelete, onEdit }: InvoiceTableProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
 
@@ -68,7 +69,7 @@ const InvoiceTable = ({
                   <td className="text-sm flex justify-center items-center p-4 gap-4">
                     <button
                       className="text-blue-500 hover:underline"
-                      onClick={() => handleEdit(invoice)}
+                      onClick={() => onEdit(invoice)}
                     >
                       Edit
                     </button>

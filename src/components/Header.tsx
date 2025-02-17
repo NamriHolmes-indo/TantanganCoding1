@@ -8,10 +8,9 @@ import { HiSun, HiMoon } from "react-icons/hi";
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  // Menangani klik di luar dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

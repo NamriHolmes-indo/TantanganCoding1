@@ -69,6 +69,13 @@ const TambahInvoice = ({
     return missing;
   };
 
+  const getValidStatus = (value: string): InvoiceStatus | "" => {
+    if (Object.values(InvoiceStatus).includes(value as InvoiceStatus)) {
+      return value as InvoiceStatus;
+    }
+    return "";
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -78,13 +85,15 @@ const TambahInvoice = ({
       return;
     }
 
+    const validStatus = status ? status : InvoiceStatus.Pending;
+
     const newInvoice = {
       id: editMode ? number : generateInvoiceNumber(),
       name,
       number,
       dueDate,
       amount,
-      status,
+      status: validStatus,
     };
 
     try {
@@ -177,19 +186,20 @@ const TambahInvoice = ({
           <p className="judulInput flex items-center">
             Status <span className="text-red-500 ml-1">*</span>
           </p>
+
           <select
             name="status"
             id="status"
             value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            onChange={(e) => setStatus(getValidStatus(e.target.value))} // Konversi nilai ke InvoiceStatus
             className="w-full bg-[#E2E8F0] p-2 border border-solid border-gray-300 rounded-md outline-none"
           >
             <option value="" disabled>
               Choose the status
             </option>
-            <option value="Pending">Pending</option>
-            <option value="Paid">Paid</option>
-            <option value="Unpaid">Unpaid</option>
+            <option value={InvoiceStatus.Pending}>Pending</option>
+            <option value={InvoiceStatus.Paid}>Paid</option>
+            <option value={InvoiceStatus.Unpaid}>Unpaid</option>
           </select>
         </div>
       </section>
