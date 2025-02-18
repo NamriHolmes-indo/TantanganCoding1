@@ -21,7 +21,7 @@ export default function AddInvoicePage() {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-full min-h-[100vh]">
       <SideNav />
 
       <main className="w-4/5 bg-[#F1F5F9] flex flex-col">

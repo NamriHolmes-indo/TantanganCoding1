@@ -6,6 +6,7 @@ import { Invoice } from "@/lib/types/invoiceTypes";
 import TambahInvoice from "@/components/invoices/InvoiceForm";
 import SideNav from "@/components/SideNav";
 import NotifInsert from "@/components/invoices/Notifikasi";
+import Header from "@/components/Header";
 
 export default function EditInvoicePage() {
   const [invoiceData, setInvoiceData] = useState<Invoice | null>(null);
@@ -52,9 +53,10 @@ export default function EditInvoicePage() {
   }
 
   return (
-    <div className="flex h-[100vh]">
+    <div className="flex h-full min-h-[100vh]">
       <SideNav />
       <main className="w-4/5 bg-[#F1F5F9] flex flex-col items-center p-6">
+        <Header />
         <h1 className="text-black w-full font-bold max-w-[1000px] text-4xl mb-6">
           Edit Invoice
         </h1>
